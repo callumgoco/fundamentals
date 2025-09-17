@@ -5,7 +5,7 @@ import './Auth.css'
 
 function Login() {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   })
   const [error, setError] = useState('')
@@ -27,7 +27,7 @@ function Login() {
     setLoading(true)
 
     try {
-      const result = await login(formData.username, formData.password)
+      const result = await login(formData.email, formData.password)
       if (result.success) {
         navigate('/dashboard')
       } else {
@@ -52,12 +52,12 @@ function Login() {
           {error && <div className="error">{error}</div>}
           
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
               disabled={loading}

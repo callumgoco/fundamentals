@@ -177,12 +177,16 @@ export const authService = {
     }
   },
 
-  async completeOnboarding(onboardingData) {
+  async completeOnboarding(onboardingData, userId) {
     try {
-      const { data: { user }, error: authError } = await supabase.auth.getUser()
-      if (authError || !user) {
-        console.error('Auth error during onboarding:', authError)
-        throw new Error('Not authenticated')
+      const effectiveUserId = userId
+      if (!effectiveUserId) {
+        const { data: { user }, error: authError } = await supabase.auth.getUser()
+        if (authError || !user) {
+          console.error('Auth error during onboarding:', authError)
+          throw new Error('Not authenticated')
+        }
+        userId = user.id
       }
 
       const { data, error } = await supabase
@@ -193,7 +197,7 @@ export const authService = {
           learning_style: onboardingData.learn,
           onboarding_completed: true
         })
-        .eq('id', user.id)
+        .eq('id', userId)
         .select()
         .single()
 

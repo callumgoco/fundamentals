@@ -148,7 +148,7 @@ export function AuthProvider({ children }) {
 
   const completeOnboarding = async (onboardingData) => {
     try {
-      const updatedUser = await authService.completeOnboarding(onboardingData)
+      const updatedUser = await authService.completeOnboarding(onboardingData, user?.id)
       setUser(updatedUser)
       return { success: true }
     } catch (error) {
