@@ -33,6 +33,12 @@ export function AuthProvider({ children }) {
         } else if (event === 'SIGNED_OUT') {
           setUser(null)
           setLoading(false)
+        } else if (event === 'TOKEN_REFRESHED' && session) {
+          await checkUser()
+        } else if (event === 'TOKEN_REFRESH_FAILED') {
+          try { await supabase.auth.signOut() } catch (_) {}
+          setUser(null)
+          setLoading(false)
         }
       }
     )
