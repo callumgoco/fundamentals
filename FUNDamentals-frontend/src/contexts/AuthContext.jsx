@@ -58,11 +58,27 @@ export function AuthProvider({ children }) {
         return
       }
       
-      // Try a simpler approach first - just get the current user
+      // Ensure there is a valid session first
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+      if (sessionError) {
+        console.error('Session check error:', sessionError)
+      }
+      if (!session) {
+        setUser(null)
+        setLoading(false)
+        return
+      }
+
+      // Now get the current user tied to this session
       const { data: { user: currentUser }, error: userError } = await supabase.auth.getUser()
       
       if (userError) {
         console.error('User check error:', userError)
+        // If token is invalid (e.g., user deleted or env mismatch), sign out to clear it
+        const message = userError?.message || ''
+        if (message.includes('sub claim') || message.includes('AuthApiError')) {
+          try { await supabase.auth.signOut() } catch (_) {}
+        }
         setUser(null)
         setLoading(false)
         return
@@ -103,10 +119,7 @@ export function AuthProvider({ children }) {
     try {
       const response = await authService.login(usernameOrEmail, password)
       setUser(response.user)
-      
-      // Store the session token
-      localStorage.setItem('supabase.auth.token', response.token)
-      
+      // Supabase SDK persists session automatically; no manual token storage
       return { success: true }
     } catch (error) {
       return { success: false, error: error.message }
