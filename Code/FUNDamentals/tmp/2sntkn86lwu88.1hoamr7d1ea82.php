@@ -1,0 +1,323 @@
+<link rel="stylesheet" href="<?= ($BASE) ?>/static/css/module-review.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="review-container">
+    <div class="review-header">
+        <div class="header-content">
+            <div class="back-nav">
+                <a href="<?= ($BASE) ?>/modules" class="back-btn">
+                    <span class="material-icons">arrow_back</span>
+                    Back to Modules
+                </a>
+            </div>
+            <div class="review-title-section">
+                <h1>📚 <?= ($module_name) ?></h1>
+                <p class="review-subtitle"><?= ($module_subtitle) ?></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="review-section">
+        <h2 class="section-title">Review Module</h2>
+        
+        <div class="tab-navigation">
+            <button class="tab-btn active" data-tab="pre-quiz" onclick="switchTab('pre-quiz')">Pre-Quiz</button>
+            <button class="tab-btn" data-tab="challenge" onclick="switchTab('challenge')">Challenge</button>
+            <button class="tab-btn" data-tab="post-quiz" onclick="switchTab('post-quiz')">Post-Quiz</button>
+        </div>
+        
+        <div class="tab-content">
+            
+            <?php if ($review_data['pre_quiz']): ?>
+                <div class="tab-pane active" id="pre-quiz">
+                    <div class="quiz-container">
+                        <div class="score-header">
+                            <h3>Score:</h3>
+                            <div class="score-badge"><?= ($review_data['pre_quiz']['score']) ?>/<?= ($review_data['pre_quiz']['total']) ?></div>
+                        </div>
+                        
+                        <div class="questions-review">
+                            <?php foreach (($review_data['pre_quiz_questions']?:[]) as $question): ?>
+                                <div class="question-item">
+                                    <h4><?= ($question['question_number']) ?>. <?= ($question['question_text']) ?></h4>
+                                    
+                                    <div class="answers-comparison">
+                                        <?php if ($question['option_a']): ?>
+                                            <?php $user_answer=$review_data['pre_quiz']['answers']['q' . $question['question_number']] ?? ''; ?>
+                                            <div class="answer <?= ($user_answer == 'a' ? ($question['correct_option'] == 'a' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'a' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'a'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'a' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'a'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option A</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_a']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_b']): ?>
+                                            <div class="answer <?= ($user_answer == 'b' ? ($question['correct_option'] == 'b' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'b' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'b'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'b' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'b'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option B</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_b']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_c']): ?>
+                                            <div class="answer <?= ($user_answer == 'c' ? ($question['correct_option'] == 'c' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'c' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'c'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'c' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'c'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option C</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_c']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_d']): ?>
+                                            <div class="answer <?= ($user_answer == 'd' ? ($question['correct_option'] == 'd' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'd' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'd'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'd' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'd'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option D</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_d']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <div class="try-again-section">
+                            <button class="try-again-btn">Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            
+            <div class="tab-pane" id="challenge">
+                <?php if ($review_data['challenge']): ?>
+                    <div class="challenge-container">
+                        <div class="score-header">
+                            <h3>Score:</h3>
+                            <div class="score-badge"><?= ($review_data['challenge']['score']) ?>/<?= ($review_data['challenge']['max_score']) ?></div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            
+            <div class="tab-pane" id="post-quiz">
+                <?php if ($review_data['post_quiz']): ?>
+                    <div class="quiz-container">
+                        <div class="score-header">
+                            <h3>Score:</h3>
+                            <div class="score-badge"><?= ($review_data['post_quiz']['score']) ?>/<?= ($review_data['post_quiz']['total']) ?></div>
+                        </div>
+                        
+                        <div class="questions-review">
+                            <?php foreach (($review_data['post_quiz_questions']?:[]) as $question): ?>
+                                <div class="question-item">
+                                    <h4><?= ($question['question_number']) ?>. <?= ($question['question_text']) ?></h4>
+                                    
+                                    <div class="answers-comparison">
+                                        <?php if ($question['option_a']): ?>
+                                            <?php $user_answer=$review_data['post_quiz']['answers']['q' . $question['question_number']] ?? ''; ?>
+                                            <div class="answer <?= ($user_answer == 'a' ? ($question['correct_option'] == 'a' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'a' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'a'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'a' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'a'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option A</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_a']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_b']): ?>
+                                            <div class="answer <?= ($user_answer == 'b' ? ($question['correct_option'] == 'b' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'b' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'b'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'b' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'b'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option B</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_b']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_c']): ?>
+                                            <div class="answer <?= ($user_answer == 'c' ? ($question['correct_option'] == 'c' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'c' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'c'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'c' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'c'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option C</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_c']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($question['option_d']): ?>
+                                            <div class="answer <?= ($user_answer == 'd' ? ($question['correct_option'] == 'd' ? 'correct user-selected' : 'wrong user-selected') : ($question['correct_option'] == 'd' ? 'correct' : '')) ?>">
+                                                <?php if ($question['correct_option'] == 'd'): ?>
+                                                    <i class="material-icons">check</i>
+                                                    <span><?= ($user_answer == 'd' ? 'Your answer (Correct)' : 'Correct Answer') ?></span>
+                                                <?php else: ?>
+                                                    <?php if ($user_answer == 'd'): ?>
+                                                        <i class="material-icons">close</i>
+                                                        <span>Your answer (Wrong)</span>
+                                                    <?php else: ?>
+                                                        <i class="material-icons">radio_button_unchecked</i>
+                                                        <span>Option D</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <p><?= ($question['option_d']) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <div class="try-again-section">
+                            <button class="try-again-btn">Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (!$review_data['pre_quiz'] && !$review_data['challenge'] && !$review_data['post_quiz']): ?>
+                <div class="no-data-state">
+                    <div class="no-data-icon">📚</div>
+                    <h3>No completion data found</h3>
+                    <p>Complete the module first to see your results here.</p>
+                    <a href="<?= ($BASE) ?>/modules/<?= ($review_data['module']) ?>" class="start-module-btn">Start Module</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+    
+    window.switchTab = function(tabName) {
+        console.log('switchTab called with:', tabName);
+        
+        try {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            console.log('Found', tabBtns.length, 'tab buttons and', tabPanes.length, 'tab panes');
+            
+            if (tabBtns.length === 0 || tabPanes.length === 0) {
+                console.error('No tab buttons or panes found');
+                return;
+            }
+            
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+                console.log('Removed active from button:', btn.dataset.tab);
+            });
+            
+            tabPanes.forEach(pane => {
+                pane.classList.remove('active');
+                console.log('Removed active from pane:', pane.id);
+            });
+            
+            const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+                console.log('Added active to button:', tabName);
+            } else {
+                console.error('Could not find tab button for:', tabName);
+            }
+            
+            const targetPane = document.getElementById(tabName);
+            if (targetPane) {
+                targetPane.classList.add('active');
+                console.log('Added active to pane:', tabName);
+            } else {
+                console.error('Could not find pane for tab:', tabName);
+            }
+        } catch (error) {
+            console.error('Error in switchTab:', error);
+        }
+    };
+
+    function initializeTabs() {
+        console.log('Initializing tabs...');
+        
+        setTimeout(function() {
+            window.switchTab('pre-quiz');
+        }, 100);
+        
+        const tryAgainBtns = document.querySelectorAll('.try-again-btn');
+        tryAgainBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '<?= ($BASE) ?>/modules/<?= ($review_data['module']) ?>';
+            });
+        });
+        
+        console.log('Tab initialization complete');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTabs);
+    } else {
+        initializeTabs();
+    }
+    
+    setTimeout(initializeTabs, 500);
+})();
+</script> 

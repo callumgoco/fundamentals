@@ -1,0 +1,444 @@
+/* Modules Styles */
+.modules {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Modules Header */
+.modules-header {
+  background: linear-gradient(135deg, #6236FF 0%, #FF6B35 100%);
+  color: white;
+  padding: 0 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: 184px;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.modules-title {
+  margin: 0 0 8px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.modules-subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+}
+
+.modules-animation-container {
+  flex-shrink: 0;
+  position: relative;
+  width: 184px;
+  height: 184px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.lottie-animation-wrapper {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+.animation-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 184px;
+  height: 184px;
+  z-index: 2;
+}
+
+/* Module Grid */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.25rem;
+}
+
+/* Module Cards */
+.module-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--input-border);
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(44, 44, 84, 0.12);
+}
+
+.module-card.coming-soon {
+  opacity: 0.7;
+}
+
+.module-card.coming-soon:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+/* Module Header */
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Icon badge */
+.module-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  border: 1px solid var(--input-border);
+}
+
+.module-icon .material-icons {
+  font-size: 1.25rem;
+}
+
+.module-icon.budgeting {
+  background: rgba(98, 54, 255, 0.08);
+  border-color: rgba(98, 54, 255, 0.2);
+  color: #6236FF;
+}
+
+.module-icon.saving {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.module-icon.investing {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.25);
+  color: #6366f1;
+}
+
+.module-status {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.status-completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-progress {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status-not-started {
+  background: rgba(156, 163, 175, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+/* Module Content */
+.module-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0.25rem 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.module-description {
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Module Progress */
+.module-progress {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--input-border);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.75rem;
+}
+
+.progress-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.progress-label .material-icons {
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+.progress-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.progress-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  border: 1px solid var(--input-border);
+  min-height: 92px;
+  text-align: left;
+}
+
+.progress-item.completed {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.progress-item.not-completed {
+  background: var(--background);
+  border: 1px solid transparent;
+}
+
+.progress-item-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.progress-item-name.completed {
+  color: #10b981;
+}
+
+.progress-item-name.not-completed {
+  color: var(--text-main);
+}
+
+.progress-item-name .material-icons {
+  font-size: 1.25rem;
+}
+
+.progress-item-name.completed .material-icons {
+  color: #10b981;
+}
+
+.progress-item-name.not-completed .material-icons {
+  color: var(--text-secondary);
+}
+
+.progress-item-score {
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.score-main {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+/* Module Actions */
+.module-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--input-border);
+}
+
+.module-action-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.module-action-btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.module-action-btn.primary:hover:not(:disabled) {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.module-action-btn.primary:disabled {
+  background: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.module-action-btn.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border: 1px solid var(--button-secondary-border);
+}
+
+.module-action-btn.secondary:hover:not(:disabled) {
+  background: var(--input-border);
+  transform: translateY(-1px);
+}
+
+.module-action-btn.secondary:disabled {
+  background: var(--text-secondary);
+  color: white;
+  cursor: not-allowed;
+  transform: none;
+  border-color: var(--text-secondary);
+}
+
+/* Utility to push last button to the right */
+.module-action-btn.push-right {
+  margin-left: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+  .progress-items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .modules-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modules {
+    padding: 0 1rem;
+  }
+  
+  .modules-title {
+    font-size: 1.75rem;
+  }
+  
+  .module-card {
+    padding: 1.5rem;
+  }
+  
+  .module-actions {
+    flex-direction: column;
+  }
+  
+  .module-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .progress-items {
+    grid-template-columns: 1fr;
+  }
+  .progress-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .progress-item-score {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .modules-title {
+    font-size: 1.5rem;
+  }
+  
+  .module-card {
+    padding: 1rem;
+  }
+  
+  .module-title {
+    font-size: 1.25rem;
+  }
+  
+  .progress-item {
+    padding: 0.75rem;
+  }
+  
+  .progress-item-name {
+    font-size: 0.875rem;
+  }
+  
+  .score-main {
+    font-size: 0.875rem;
+  }
+}

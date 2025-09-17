@@ -1,0 +1,479 @@
+/* Budget Blitz Game Styles */
+.budget-blitz-game {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Game Header */
+.game-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.game-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.game-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.game-icon .material-icons {
+  font-size: 1.5rem;
+}
+
+.game-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* Game Intro */
+.game-intro {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-intro h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 1rem 0;
+}
+
+.game-intro p {
+  color: var(--text-secondary);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.game-instructions {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.game-instructions h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 1rem 0;
+}
+
+.game-instructions ul {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.game-instructions li {
+  margin-bottom: 0.5rem;
+}
+
+.start-btn {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+/* Game Content */
+.game-content {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+/* Game Info */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.round-info, .score-info, .budget-info {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.score-info {
+  color: var(--primary);
+}
+
+.budget-info {
+  color: #10b981;
+}
+
+/* Timer Section */
+.timer-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.timer-bar {
+  width: 100%;
+  height: 20px;
+  background: var(--background);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.timer-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 1s linear;
+}
+
+.time-left {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Expense Card */
+.expense-card {
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.expense-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.expense-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.expense-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 0.5rem 0;
+}
+
+.expense-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.expense-type {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  background: rgba(98, 54, 255, 0.1);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-accept, .btn-reject {
+  padding: 1rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+.btn-accept {
+  background: #10b981;
+  color: white;
+}
+
+.btn-accept:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+.btn-accept:disabled {
+  background: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-reject {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-reject:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Expense History */
+.expense-history h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 1rem 0;
+}
+
+.history-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid transparent;
+}
+
+.history-item.accepted {
+  border-left-color: #10b981;
+}
+
+.history-item.rejected {
+  border-left-color: #ef4444;
+}
+
+.history-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.history-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.history-category, .history-amount, .history-decision, .history-score {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.history-category {
+  color: var(--text-main);
+  min-width: 100px;
+}
+
+.history-amount {
+  color: var(--primary);
+  min-width: 80px;
+}
+
+.history-decision {
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.history-item.accepted .history-decision {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.history-item.rejected .history-decision {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.history-score {
+  color: var(--text-main);
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.no-expenses {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Game Over */
+.game-over {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.game-over h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 2rem 0;
+}
+
+.final-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.final-stats .stat {
+  padding: 1.5rem;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+}
+
+.final-stats .stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.final-stats .stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.game-over .game-actions {
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .budget-blitz-game {
+    padding: 0 1rem;
+  }
+  
+  .game-content {
+    padding: 1.5rem;
+  }
+  
+  .game-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .game-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .expense-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .expense-actions {
+    flex-direction: column;
+  }
+  
+  .btn-accept, .btn-reject {
+    width: 100%;
+  }
+  
+  .history-details {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-content {
+    padding: 1rem;
+  }
+  
+  .expense-card {
+    padding: 1.5rem;
+  }
+  
+  .expense-info h3 {
+    font-size: 1.25rem;
+  }
+  
+  .expense-amount {
+    font-size: 1.1rem;
+  }
+  
+  .timer-bar {
+    height: 16px;
+  }
+  
+  .time-left {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,323 @@
+.onboarding-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #6b4cff 0%, #6236FF 100%);
+    position: relative;
+}
+
+.onboarding-card {
+    background: #fff;
+    color: #1D1D1F;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(44, 44, 84, 0.08);
+    border: 2px solid #6236FF;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s cubic-bezier(.77,0,.18,1), color 0.3s cubic-bezier(.77,0,.18,1);
+}
+
+.onboarding-logo {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: #ece9fc;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background: #6236FF;
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.step-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.step-content.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.step-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1D1D1F;
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 2rem 0;
+}
+
+.onboarding-option {
+    padding: 1rem;
+    border: 2px solid #ece9fc;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.onboarding-option:hover {
+    border-color: #6236FF;
+    background: #f8f7ff;
+}
+
+.onboarding-option.selected {
+    border-color: #6236FF;
+    background: #ece9fc;
+}
+
+.option-icon {
+    font-size: 1.5rem;
+}
+
+.option-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1D1D1F;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 2rem;
+}
+
+.back-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: #ece9fc;
+    color: #6236FF;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: #e0dcfc;
+}
+
+.next-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: #FF5C35;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+}
+
+.next-btn:hover {
+    background: #ff7a5c;
+}
+
+.onboarding-btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.onboarding-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.onboarding-btn.primary {
+    background: #FF5C35;
+    color: #fff;
+}
+
+.onboarding-btn.primary:hover {
+    background: #ff7a5c;
+}
+
+.floating-logout {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.floating-logout:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1D1D1F;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #ece9fc;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6236FF;
+    box-shadow: 0 0 0 3px rgba(98, 54, 255, 0.1);
+}
+
+.error {
+    background-color: #fff2f2;
+    border: 1px solid #ffcdd2;
+    color: #d32f2f;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.success {
+    background-color: #f1f8e9;
+    border: 1px solid #c5e1a5;
+    color: #33691e;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.onboarding-step-desc {
+    color: #6B6B6E;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.error:empty {
+    display: none;
+}
+
+.success:empty {
+    display: none;
+}
+
+/* GSAP Animation Classes */
+.gsap-card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.gsap-progress {
+    transform: scaleX(0);
+    animation: scaleIn 1s ease-out 0.5s forwards;
+}
+
+/* Fallback animations in case GSAP fails */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .onboarding-container {
+        padding: 1rem;
+    }
+    
+    .onboarding-card {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .step-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .btn-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .back-btn,
+    .next-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .onboarding-card {
+        padding: 1rem;
+    }
+    
+    .step-content h2 {
+        font-size: 1.25rem;
+    }
+    
+    .onboarding-option {
+        padding: 0.875rem;
+    }
+    
+    .option-text {
+        font-size: 1rem;
+    }
+}

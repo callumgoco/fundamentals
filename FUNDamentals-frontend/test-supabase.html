@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Connection Test</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="status">Testing connection...</div>
+    <div id="result"></div>
+
+    <script>
+        const supabaseUrl = 'https://ibfzrwmpbgcqcifpqbhj.supabase.co'
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImliZnpyd21wYmdjcWNpZnFxYmhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NDcxOTUsImV4cCI6MjA3MjEyMzE5NX0.Lmg1NSHM4KnfNx5HWoluuz6cmw880h48Wyzkw-DqdSk'
+
+        console.log('Testing Supabase connection...')
+        console.log('URL:', supabaseUrl)
+        console.log('Key length:', supabaseAnonKey.length)
+
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey)
+
+        // Test basic connection
+        supabaseClient.auth.getSession()
+            .then(({ data, error }) => {
+                if (error) {
+                    console.error('Connection failed:', error)
+                    document.getElementById('status').innerHTML = '❌ Connection Failed'
+                    document.getElementById('result').innerHTML = `
+                        <h3>Error Details:</h3>
+                        <p><strong>Message:</strong> ${error.message}</p>
+                        <p><strong>Status:</strong> ${error.status}</p>
+                        <p><strong>Name:</strong> ${error.name}</p>
+                        <p><strong>Code:</strong> ${error.code || 'N/A'}</p>
+                    `
+                } else {
+                    console.log('Connection successful:', data)
+                    document.getElementById('status').innerHTML = '✅ Connection Successful'
+                    document.getElementById('result').innerHTML = `
+                        <h3>Success!</h3>
+                        <p>Supabase is connected and working.</p>
+                        <p><strong>Session:</strong> ${JSON.stringify(data, null, 2)}</p>
+                    `
+                }
+            })
+            .catch(err => {
+                console.error('Connection exception:', err)
+                document.getElementById('status').innerHTML = '❌ Connection Exception'
+                document.getElementById('result').innerHTML = `
+                    <h3>Exception Details:</h3>
+                    <p><strong>Error:</strong> ${err.message}</p>
+                    <p><strong>Stack:</strong> ${err.stack}</p>
+                `
+            })
+    </script>
+</body>
+</html>

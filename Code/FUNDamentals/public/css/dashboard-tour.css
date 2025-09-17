@@ -1,0 +1,211 @@
+.global-tour-tooltip,
+.dashboard-tour-tooltip {
+    min-width: 400px !important;
+    max-width: 480px !important;
+    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 12px 24px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+    border: none !important;
+    background: white !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(10px) !important;
+    z-index: 99999 !important;
+    animation: tourTooltipSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@keyframes tourTooltipSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+.global-tour-tooltip .introjs-tooltip-header,
+.dashboard-tour-tooltip .introjs-tooltip-header {
+    padding: 24px 28px 16px !important;
+    border-bottom: none !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    position: relative !important;
+    letter-spacing: -0.2px !important;
+}
+
+.global-tour-tooltip .introjs-tooltip-header::after,
+.dashboard-tour-tooltip .introjs-tooltip-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.8) 30%, 
+        rgba(255,255,255,0.9) 50%, 
+        rgba(255,255,255,0.8) 70%, 
+        rgba(255,255,255,0.2) 100%);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.global-tour-tooltip .introjs-tooltiptext,
+.dashboard-tour-tooltip .introjs-tooltiptext {
+    padding: 22px 28px 24px !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: #2d3748 !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.1px !important;
+}
+
+.global-tour-tooltip .introjs-tooltiptext strong,
+.dashboard-tour-tooltip .introjs-tooltiptext strong {
+    color: #667eea !important;
+    font-weight: 600 !important;
+}
+
+.global-tour-tooltip .introjs-bullets,
+.dashboard-tour-tooltip .introjs-bullets {
+    padding: 8px 24px !important;
+}
+
+.global-tour-tooltip .introjs-progress,
+.dashboard-tour-tooltip .introjs-progress {
+    background: #e5e7eb !important;
+    border-radius: 8px !important;
+    margin: 14px 28px !important;
+    height: 8px !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.global-tour-tooltip .introjs-progressbar,
+.dashboard-tour-tooltip .introjs-progressbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-radius: 8px !important;
+    height: 8px !important;
+    box-shadow: 0 1px 3px rgba(102, 126, 234, 0.3) !important;
+    transition: width 0.3s ease !important;
+}
+
+.global-tour-tooltip .introjs-tooltipbuttons,
+.dashboard-tour-tooltip .introjs-tooltipbuttons {
+    padding: 18px 28px 22px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: linear-gradient(180deg, #fafbfc 0%, #f8fafc 100%) !important;
+}
+
+.global-tour-tooltip .introjs-button,
+.dashboard-tour-tooltip .introjs-button {
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 12px 20px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    letter-spacing: -0.1px !important;
+}
+
+.global-tour-tooltip .introjs-nextbutton,
+.dashboard-tour-tooltip .introjs-nextbutton {
+    background: #667eea !important;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.25) !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+}
+
+.global-tour-tooltip .introjs-nextbutton:hover,
+.dashboard-tour-tooltip .introjs-nextbutton:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.25) !important;
+    background: #5a67d8 !important;
+    opacity: 1 !important;
+}
+
+.global-tour-tooltip .introjs-prevbutton,
+.dashboard-tour-tooltip .introjs-prevbutton {
+    background: #f9fafb !important;
+    color: #374151 !important;
+    margin-right: 12px !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.global-tour-tooltip .introjs-prevbutton:hover,
+.dashboard-tour-tooltip .introjs-prevbutton:hover {
+    background: #f3f4f6 !important;
+    transform: translateY(-1px) !important;
+}
+
+.global-tour-tooltip .introjs-skipbutton,
+.dashboard-tour-tooltip .introjs-skipbutton {
+    background: transparent !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    border: 1px solid transparent !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 1000 !important;
+}
+
+.global-tour-tooltip .introjs-skipbutton:hover,
+.dashboard-tour-tooltip .introjs-skipbutton:hover {
+    color: #6b7280 !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+
+
+@media (max-width: 768px) {
+    .global-tour-tooltip,
+    .dashboard-tour-tooltip {
+        min-width: 320px !important;
+        max-width: 360px !important;
+        margin: 10px !important;
+    }
+    
+    .global-tour-tooltip .introjs-tooltiptext,
+    .dashboard-tour-tooltip .introjs-tooltiptext {
+        font-size: 14px !important;
+        padding: 16px 20px !important;
+    }
+    
+    .global-tour-tooltip .introjs-tooltipbuttons,
+    .dashboard-tour-tooltip .introjs-tooltipbuttons {
+        padding: 12px 20px 16px !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .global-tour-tooltip .introjs-button,
+    .dashboard-tour-tooltip .introjs-button {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .global-tour-tooltip,
+    .dashboard-tour-tooltip {
+        min-width: 280px !important;
+        max-width: 320px !important;
+    }
+}

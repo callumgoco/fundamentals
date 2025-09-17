@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Auth Test</title>
+</head>
+<body>
+    <h1>Supabase Auth Test</h1>
+    <p>Testing user registration directly...</p>
+    
+    <div id="result"></div>
+    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+        const supabaseUrl = 'https://ibfzrwmpbgcqcifpqbhj.supabase.co'
+        const supabaseAnonKey = 'sb_publishable_J3hYxCCWNt4FFb9cpMdHEQ_L0Le5_JV'
+        
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey)
+        
+        async function testAuth() {
+            const resultDiv = document.getElementById('result')
+            
+            try {
+                console.log('🧪 Testing Supabase connection...')
+                
+                // Test 1: Connection
+                const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession()
+                if (sessionError) {
+                    throw new Error('Connection failed: ' + sessionError.message)
+                }
+                console.log('✅ Connection successful:', sessionData)
+                resultDiv.innerHTML += '<p>✅ Connection successful</p>'
+                
+                // Test 2: User Registration
+                console.log('🧪 Testing user registration...')
+                const { data: signupData, error: signupError } = await supabaseClient.auth.signUp({
+                    email: 'test' + Date.now() + '@example.com',
+                    password: 'testpassword123',
+                    options: {
+                        data: {
+                            username: 'testuser' + Date.now()
+                        }
+                    }
+                })
+                
+                if (signupError) {
+                    throw new Error('Registration failed: ' + signupError.message)
+                }
+                
+                console.log('✅ Registration successful:', signupData)
+                resultDiv.innerHTML += '<p>✅ Registration successful</p>'
+                
+            } catch (error) {
+                console.error('❌ Test failed:', error)
+                resultDiv.innerHTML += '<p>❌ Test failed: ' + error.message + '</p>'
+            }
+        }
+        
+        // Run the test
+        testAuth()
+    </script>
+</body>
+</html>

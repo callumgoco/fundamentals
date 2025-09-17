@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/FUNDamentals/public/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:700,400&display=swap">
+</head>
+<body>
+    <div class="onboarding-container">
+        <div class="onboarding-card gsap-card">
+            <h1 style="text-align:center;">Sign Up</h1>
+            <p class="onboarding-step-desc">Sign up to start tracking your progress</p>
+            
+            <?php if (isset($error)): ?>
+                <div class="error"><?= ($error) ?></div>
+            <?php endif; ?>
+            
+            <?php if (isset($success)): ?>
+                <div class="success"><?= ($success) ?></div>
+            <?php endif; ?>
+            
+            <form action="register" method="POST" style="text-align:center;">
+                <div class="options-container">
+                    <div class="form-group" style="text-align:left;">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group" style="text-align:left;">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group" style="text-align:left;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                </div>
+                
+                <div class="btn-container" style="justify-content:center;">
+                    <a href="login" class="back-btn">Back to Login</a>
+                    <button type="submit" class="next-btn" style="display: block;">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="onboarding-logo">FUNDamentals</div>
+    </div>
+</body>
+</html> 
