@@ -390,9 +390,9 @@ body {
   height: calc(100vh - 4rem);
   background: var(--background);
   border-radius: 24px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  /* Use soft shadow instead of borders to avoid double-box effect during animations */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   padding: 3rem 2.5rem;
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
