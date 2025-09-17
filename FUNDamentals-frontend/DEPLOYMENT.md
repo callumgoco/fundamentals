@@ -195,3 +195,20 @@ Your FUNDamentals app is now a modern, scalable web application ready for the fu
 - **Modern development** workflow
 
 **Ready to deploy?** Follow the steps above and your app will be live on Netlify in minutes!
+
+## Supabase Security Hardening
+
+Address common lints before going to production:
+
+- Enable RLS on tables exposed to PostgREST and add restrictive policies.
+- Fix function search_path warnings to avoid privilege escalation issues.
+- Reduce Auth OTP expiry (< 1 hour) and enable Leaked Password Protection.
+- Keep Postgres up to date from Database > Settings.
+
+Steps:
+
+1) Open `FUNDamentals-frontend/supabase-hardening.sql` in the Supabase SQL editor and run it.
+2) In Supabase Auth settings:
+   - Set OTP expiry to 3600 seconds or less
+   - Enable Leaked Password Protection
+3) Re-run the Supabase Linter to verify issues are resolved.
