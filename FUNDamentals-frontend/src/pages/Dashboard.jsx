@@ -120,14 +120,7 @@ const Dashboard = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="dashboard-loading">
-        <div className="loading-spinner"></div>
-        <p>Loading your dashboard...</p>
-      </div>
-    );
-  }
+  // Render immediately with default values; data will hydrate once fetched
 
   return (
     <div className="dashboard">

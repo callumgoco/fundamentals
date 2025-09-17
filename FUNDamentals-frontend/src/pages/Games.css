@@ -1,7 +1,7 @@
 /* Games Styles */
 .games {
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
 }
 
 /* Games Header */
@@ -460,7 +460,7 @@
 
 @media (max-width: 768px) {
   .games {
-    padding: 0 1rem;
+    padding: 0;
   }
   
   .games-title {

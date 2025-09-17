@@ -1,7 +1,7 @@
 /* Modules Styles */
 .modules {
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
 }
 
 /* Modules Header */
@@ -383,7 +383,7 @@
 
 @media (max-width: 768px) {
   .modules {
-    padding: 0 1rem;
+    padding: 0;
   }
   
   .modules-title {
