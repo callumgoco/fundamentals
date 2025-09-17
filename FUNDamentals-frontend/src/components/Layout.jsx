@@ -87,7 +87,7 @@ const Layout = ({ children }) => {
         <div className="avatar-dropdown-container">
           <button className="mobile-avatar" onClick={toggleAvatarDropdown}>
             <div className="avatar">
-              {user?.user_metadata?.full_name?.charAt(0) || 'U'}
+              {user?.username?.charAt(0) || 'U'}
             </div>
             <div 
               className="progress-ring" 
@@ -101,7 +101,7 @@ const Layout = ({ children }) => {
             <div className="avatar-dropdown">
               <div className="dropdown-header">
                 <div className="user-name">
-                  {user?.user_metadata?.full_name || 'User'}
+                  {user?.username || 'User'}
                 </div>
                 <div className="user-progress">
                   {sidebarProgress}% Complete
@@ -267,7 +267,7 @@ const Layout = ({ children }) => {
         <div className="profile-box">
           <div className="avatar-container">
             <div className="avatar">
-              {user?.user_metadata?.full_name?.charAt(0) || 'U'}
+              {user?.username?.charAt(0) || 'U'}
             </div>
             <div 
               className="progress-ring" 
@@ -279,7 +279,7 @@ const Layout = ({ children }) => {
           
           <div className="user-info">
             <div className="user-name">
-              {user?.user_metadata?.full_name || 'User'}
+              {user?.username || 'User'}
             </div>
             <div className="user-progress">
               {sidebarProgress}% Complete

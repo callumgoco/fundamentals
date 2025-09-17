@@ -134,7 +134,7 @@ const Dashboard = () => {
       <div className="dashboard-header">
         <div className="header-content">
           <div className="header-text" id="dashboard-welcome">
-            <h1 className="dashboard-title">Hi {user?.user_metadata?.full_name || 'User'} 👋 Ready to dive in?</h1>
+            <h1 className="dashboard-title">Hi {user?.username || 'User'} 👋 Ready to dive in?</h1>
             <p className="dashboard-subtitle">Your financial journey continues here.</p>
           </div>
 
