@@ -4,6 +4,34 @@ import { vocabulary } from '../data/vocabulary'
 import './Vocab.css'
 
 function Vocab() {
+  const [activeCardIndexes, setActiveCardIndexes] = React.useState(new Set());
+
+  const toggleCardActive = (cardIndex) => {
+    setActiveCardIndexes(prev => {
+      const next = new Set(prev);
+      if (next.has(cardIndex)) {
+        next.delete(cardIndex);
+      } else {
+        next.add(cardIndex);
+      }
+      return next;
+    });
+  };
+
+  const handleKeyDown = (event, cardIndex) => {
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+      event.preventDefault();
+      toggleCardActive(cardIndex);
+    }
+    if (event.key === 'Escape') {
+      setActiveCardIndexes(prev => {
+        const next = new Set(prev);
+        next.delete(cardIndex);
+        return next;
+      });
+    }
+  };
+
   return (
     <div className="vocab">
       <div className="vocab-header">
@@ -32,8 +60,13 @@ function Vocab() {
         {vocabulary.map((word, index) => (
           <div 
             key={word.term}
-            className={`card${index === 0 ? ' first-vocab-card' : ''}`}
+            className={`card${activeCardIndexes.has(index) ? ' is-active' : ''}${index === 0 ? ' first-vocab-card' : ''}`}
             id={index === 0 ? 'first-vocab-card' : ''}
+            role="button"
+            tabIndex={0}
+            aria-pressed={activeCardIndexes.has(index)}
+            onClick={() => toggleCardActive(index)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
           >
             <div className="card__front">
               <div className="term-icon">
@@ -44,7 +77,7 @@ function Vocab() {
               <h3>{word.term}</h3>
               <div className="pronunciation">{word.pronunciation}</div>
               <div className="definition">{word.definition}</div>
-              <div className="hover-prompt">Hover to see example</div>
+              <div className="hover-prompt">Tap or click to see example</div>
             </div>
             
             <div className="card__back">
