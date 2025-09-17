@@ -99,9 +99,9 @@ export function AuthProvider({ children }) {
     }
   }
 
-  const login = async (username, password) => {
+  const login = async (usernameOrEmail, password) => {
     try {
-      const response = await authService.login(username, password)
+      const response = await authService.login(usernameOrEmail, password)
       setUser(response.user)
       
       // Store the session token

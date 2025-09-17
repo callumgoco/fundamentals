@@ -1,47 +1,85 @@
 import { supabase, authHelpers } from '../lib/supabase'
 
 export const authService = {
-  async login(username, password) {
+  async login(usernameOrEmail, password) {
     try {
-      let profile = null
-      try {
-        const { data: profileData, error: profileError } = await supabase
-          .from('user_profiles')
-          .select('email')
-          .eq('username', username)
-          .single()
+      // Determine email from username if needed
+      let emailToUse = usernameOrEmail
+      if (!usernameOrEmail.includes('@')) {
+        try {
+          const { data: profileData, error: profileError } = await supabase
+            .from('user_profiles')
+            .select('email')
+            .eq('username', usernameOrEmail)
+            .maybeSingle()
 
-        if (profileError || !profileData) {
-          console.error('Profile lookup error:', profileError)
-          throw new Error('User not found')
+          if (profileError) {
+            console.error('Profile lookup error:', profileError)
+            throw new Error('Failed to lookup user profile')
+          }
+
+          if (!profileData?.email) {
+            throw new Error('Username not found. Try signing in with your email.')
+          }
+
+          emailToUse = profileData.email
+        } catch (profileErr) {
+          console.error('Profile lookup exception:', profileErr)
+          throw profileErr
         }
-
-        profile = profileData
-      } catch (profileErr) {
-        console.error('Profile lookup exception:', profileErr)
-        throw new Error('Failed to lookup user profile')
       }
 
-      const { data, error } = await authHelpers.signIn(profile.email, password)
+      const { data, error } = await authHelpers.signIn(emailToUse, password)
       if (error) {
         console.error('Sign in error:', error)
         throw new Error(error.message)
       }
 
+      // Ensure a user profile exists; create one if missing
       const { data: userProfile, error: userError } = await supabase
         .from('user_profiles')
         .select('*')
         .eq('id', data.user.id)
-        .single()
+        .maybeSingle()
 
       if (userError) {
         console.error('User profile fetch error:', userError)
         throw new Error('Failed to get user profile')
       }
 
+      let ensuredProfile = userProfile
+
+      if (!ensuredProfile) {
+        // Attempt to create a minimal profile for this user
+        const usernameFromInput = usernameOrEmail.includes('@') ? null : usernameOrEmail
+        const { data: createdProfile, error: createError } = await supabase
+          .from('user_profiles')
+          .insert({
+            id: data.user.id,
+            email: data.user.email,
+            username: usernameFromInput || data.user.user_metadata?.username || null,
+            onboarding_completed: false
+          })
+          .select()
+          .single()
+
+        if (createError) {
+          console.error('User profile create error:', createError)
+          // Do not block sign-in; return minimal details and let app handle onboarding later
+          ensuredProfile = {
+            id: data.user.id,
+            email: data.user.email,
+            username: usernameFromInput || data.user.user_metadata?.username || null,
+            onboarding_completed: false
+          }
+        } else {
+          ensuredProfile = createdProfile
+        }
+      }
+
       return {
         token: data.session.access_token,
-        user: userProfile
+        user: ensuredProfile
       }
     } catch (error) {
       console.error('Login service error:', error)
