@@ -11,6 +11,7 @@ import Games from './pages/Games'
 import Profile from './pages/Profile'
 import Vocab from './pages/Vocab'
 import Onboarding from './pages/Onboarding'
+import CheckEmail from './pages/CheckEmail'
 import Layout from './components/Layout'
 import PrivateRoute from './components/PrivateRoute'
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/check-email" element={<CheckEmail />} />
         
         {/* Onboarding route - accessible to authenticated users */}
         <Route path="/onboarding" element={

@@ -43,7 +43,7 @@ function Register() {
     try {
       const result = await register(formData.username, formData.email, formData.password)
       if (result.success) {
-        navigate('/onboarding')
+        navigate(`/check-email?email=${encodeURIComponent(formData.email)}`)
       } else {
         setError(result.error)
       }

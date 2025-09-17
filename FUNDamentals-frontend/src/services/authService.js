@@ -64,25 +64,25 @@ export const authService = {
         throw new Error(error.message)
       }
 
-      await new Promise(resolve => setTimeout(resolve, 3000))
-
-      const { data: userProfile, error: userError } = await supabase
-        .from('user_profiles')
-        .select('*')
-        .eq('id', data.user.id)
-        .single()
-
-      if (userError || !userProfile) {
-        throw new Error('User profile not created. Ensure DB trigger exists or create via a secure server function.')
-      }
-
-      return {
-        token: data.session?.access_token,
-        user: userProfile
-      }
+      // Do not require immediate profile creation; email confirmation may be pending
+      return { success: true }
     } catch (error) {
       console.error('Registration service error:', error)
       throw error
+    }
+  },
+
+  async resendConfirmation(email) {
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email
+      })
+      if (error) throw error
+      return { success: true }
+    } catch (error) {
+      console.error('Resend confirmation error:', error)
+      throw new Error(error.message || 'Failed to resend confirmation email')
     }
   },
 
