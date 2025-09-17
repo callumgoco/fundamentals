@@ -1,4 +1,14 @@
 {
+  "private": true,
+  "workspaces": [
+    "FUNDamentals-frontend"
+  ],
+  "scripts": {
+    "install": "npm --prefix FUNDamentals-frontend install",
+    "build": "npm --prefix FUNDamentals-frontend run build",
+    "dev": "npm --prefix FUNDamentals-frontend run dev",
+    "preview": "npm --prefix FUNDamentals-frontend run preview"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.56.1",
     "chart.js": "^4.5.0",
